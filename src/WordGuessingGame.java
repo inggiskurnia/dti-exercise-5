@@ -3,7 +3,7 @@ import java.util.Scanner;
 public class WordGuessingGame {
     private String[] words = {"jakarta", "bandung", "surabaya", "pekanbaru", "batam"};
     private int attemptLeft = 10;
-    public StringBuilder hidenWord = new StringBuilder();
+    public StringBuilder hiddenWord = new StringBuilder();
 
     //Select hidden word
     private String selectRandomWord(){
@@ -25,9 +25,9 @@ public class WordGuessingGame {
     private void hideWord(String word){
 
         for (int i=0; i<word.length(); i++) {
-            this.hidenWord.append('_');
+            this.hiddenWord.append('_');
         }
-        System.out.println("The hidden word is : " + hidenWord);
+        System.out.println("The hidden word is : " + hiddenWord);
     }
 
     //To display guess from user
@@ -55,21 +55,16 @@ public class WordGuessingGame {
     //Update hidden word
     private void updateHiddenWord(String word, char guess){
 
-        if (String.valueOf(hidenWord) == word){
-            this.attemptLeft = 0;
-            System.out.println("You have guess the correct word : " + hidenWord);
-            return;
-        }
-
         if (isGuessCorrect(word,guess)){
             for(int i=0; i<word.length(); i++){
                 if (guess == word.charAt(i)) {
-                    this.hidenWord.setCharAt(i, guess);
+                    this.hiddenWord.setCharAt(i, guess);
                 }
             }
-            System.out.println("Updated hidden word is " + hidenWord);
+            //this.attemptLeft -= 1;
+            System.out.println("Updated hidden word is " + hiddenWord);
         } else {
-            System.out.println("Your guess is incorrect " + hidenWord);
+            System.out.println("Your guess is incorrect " + hiddenWord);
         }
 
     }
@@ -81,6 +76,7 @@ public class WordGuessingGame {
 
         for(int i=0; i<attemptLeft; i++){
             updateHiddenWord(selectedWord, getPlayerGuess());
+            System.out.println("Remaining attempt : " + attemptLeft);
         }
     }
 

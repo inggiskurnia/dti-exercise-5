@@ -12,6 +12,10 @@ public class Main {
 
         switch (question){
             case 1 : number1.run();;
+            case 2 : CurrencyConverter.run();
+            case 3 : RemoveOdd.run();
+            case 4 : FizzBuzz.run();
+            case 5 : SumPairNumbers.run();
         }
     }
 }
