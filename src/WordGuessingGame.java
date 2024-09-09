@@ -4,6 +4,7 @@ public class WordGuessingGame {
     private String[] words = {"jakarta", "bandung", "surabaya", "pekanbaru", "batam"};
     private int attemptLeft = 10;
     public StringBuilder hiddenWord = new StringBuilder();
+    private boolean runGame = true;
 
     //Select hidden word
     private String selectRandomWord(){
@@ -61,10 +62,16 @@ public class WordGuessingGame {
                     this.hiddenWord.setCharAt(i, guess);
                 }
             }
-            //this.attemptLeft -= 1;
             System.out.println("Updated hidden word is " + hiddenWord);
+            this.attemptLeft -= 1;
+            System.out.println("Remaining attempt : " + attemptLeft);
         } else {
             System.out.println("Your guess is incorrect " + hiddenWord);
+        }
+
+        if (hiddenWord.toString().equals(word)){
+            System.out.println("You have guessed the correct word");
+            this.runGame = false;
         }
 
     }
@@ -74,9 +81,14 @@ public class WordGuessingGame {
         String selectedWord = selectRandomWord();
         hideWord(selectedWord);
 
-        for(int i=0; i<attemptLeft; i++){
-            updateHiddenWord(selectedWord, getPlayerGuess());
-            System.out.println("Remaining attempt : " + attemptLeft);
+        while(runGame){
+
+            if(attemptLeft != 0) {
+                updateHiddenWord(selectedWord, getPlayerGuess());
+            } else {
+                System.out.println("Your don't have any remaining attempts to ty");
+            }
+
         }
     }
 
