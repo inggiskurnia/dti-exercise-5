@@ -41,6 +41,8 @@ public class WordGuessingGame {
 
     //To check weather the guess is in the word
     private boolean isGuessCorrect(String word, char guess) {
+        //return hiddenWord.toString().contains("_");
+
         boolean correct = false;
 
         for(int i=0; i<word.length(); i++) {

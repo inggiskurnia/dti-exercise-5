@@ -9,6 +9,7 @@ public class Main {
         int question = myObj.nextInt();
 
         WordGuessingGame number1 = new WordGuessingGame();
+        SumPairNumbers SumPairNumbers = new SumPairNumbers();
 
         switch (question){
             case 1 : number1.run();;
